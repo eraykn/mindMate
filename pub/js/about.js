@@ -8,48 +8,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 100);
     
-    // Logo ve ana sayfa bağlantıları için tıklama işlevselliği
-    const logoLink = document.querySelector('.logo-link');
-    const anasayfaLink = document.querySelector('.menu-item[href="../index.html#anasayfa"]');
+    // Ana sayfaya yönlendirme yapan tüm bağlantıları düzeltme
+    const mainPageLinks = document.querySelectorAll('.sidebar-menu .menu-item:not(.active)');
+    mainPageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            
+            // Sadece ana sayfadaki bölüm bağlantılarını kontrol et
+            if (href && href.includes('#')) {
+                console.log('Ana sayfadaki bölüme yönlendiriliyor:', href);
+                
+                // Ripple efekti uygula
+                createRipple(e);
+                
+                // Sayfayı yönlendir
+                window.location.href = href;
+            }
+        });
+    });
     
-    // Logo tıklaması için özel işlev (Sorun burada olabilir)
+    // Logo tıklaması için özel işlev
+    const logoLink = document.querySelector('.logo-link');
     if (logoLink) {
         logoLink.addEventListener('click', function(e) {
-            // Logo tıklamasında sayfa yönlendirmesini manuel yapalım
+            e.preventDefault();
+            createRipple(e);
+            console.log('Logo tıklandı, ana sayfaya yönlendiriliyor');
             window.location.href = '../index.html';
-            return false; // Varsayılan davranışı engelleyelim
         });
     }
-    
-    // Ana sayfa tıklaması için özel işlev
-    if (anasayfaLink) {
-        anasayfaLink.addEventListener('click', function(e) {
-            // Ana sayfa tıklamasında sayfa yönlendirmesini manuel yapalım
-            window.location.href = '../index.html#anasayfa';
-            return false; // Varsayılan davranışı engelleyelim
-        });
-    }
-    
-    // Tüm menü öğeleri için genel işlev
-    const allMenuItems = document.querySelectorAll('.sidebar-menu .menu-item');
-    allMenuItems.forEach(item => {
-        if (!item.classList.contains('active')) { // Aktif olmayan menü öğeleri için
-            item.addEventListener('click', function(e) {
-                const target = this.getAttribute('href');
-                if (target && target !== '#' && !target.startsWith('javascript')) {
-                    // Konsola yönlendirmeyi yazdıralım (debug için)
-                    console.log('Menü tıklaması: Yönlendiriliyor:', target);
-                    
-                    // Sayfayı manuel olarak yönlendirelim
-                    window.location.href = target;
-                    
-                    // Varsayılan davranışı engelleyelim
-                    e.preventDefault();
-                    return false;
-                }
-            });
-        }
-    });
     
     // Menü tıklamaları için ripple (dalga) efekti
     function createRipple(e) {
@@ -69,6 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         button.appendChild(circle);
+        
+        // Ripple efekti tamamlandıktan sonra kaldır
+        setTimeout(() => {
+            circle.remove();
+        }, 600);
     }
     
     // Tüm menü öğelerine ripple efekti ekleyelim
@@ -77,13 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', createRipple);
     });
     
-    // Logo-link için de ripple efekti ekleyelim
-    if (logoLink) {
-        logoLink.addEventListener('click', createRipple);
-    }
-    
-    // Sayfa yüklendiğinde konsola bildiri yazdıralım (debug için)
+    // Konsola bilgi yazdırma
     console.log('Hakkımızda sayfası JavaScript yüklendi');
-    console.log('Logo link:', logoLink);
-    console.log('Ana sayfa link:', anasayfaLink);
 });
