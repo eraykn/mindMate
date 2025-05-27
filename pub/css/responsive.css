@@ -1,0 +1,310 @@
+@media screen and (max-width: 992px) {
+    .top-sidebar {
+        padding: 8px 15px;
+    }
+    
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .logo h1 {
+        font-size: 18px;
+    }
+    
+    .sidebar-menu ul {
+        margin-left: 5px;
+    }
+    
+    .sidebar-menu ul li a.menu-item {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .hero-section {
+        padding: 60px 20px;
+        flex-direction: column;
+    }
+    
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.6rem;
+    }
+
+    .hero-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+        margin: 0 auto 30px auto;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    /* Aşağı kaydır göstergesi için responsive konumlandırma */
+    .scroll-down-indicator {
+        bottom: 70px;
+    }
+    
+    /* Bölüm Responsive */
+    .how-it-works-section,
+    .pomodoro-section,
+    .mood-tracking-section {
+        padding: 80px 20px 60px;
+    }
+    
+    .section-title {
+        font-size: 2.4rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .features-container {
+        flex-direction: column;
+    }
+    
+    .feature-image {
+        margin-bottom: 30px;
+    }
+    
+    .feature-title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .feature-description {
+        text-align: center;
+    }
+    
+    .feature-content .cta-buttons {
+        justify-content: center;
+    }
+    
+    /* Pomodoro Section Responsive */
+    .pomodoro-section .features-container {
+        flex-direction: column-reverse;
+    }
+    
+    .pomodoro-section .feature-image {
+        margin-top: 30px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .top-sidebar {
+        padding: 8px 10px;
+    }
+    
+    .logo-image {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .logo h1 {
+        font-size: 16px;
+        margin-left: 8px;
+    }
+    
+    .sidebar-menu ul li {
+        margin-right: 5px;
+    }
+    
+    .sidebar-menu ul li a.menu-item {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+    
+    .sidebar-menu ul li a i {
+        font-size: 12px;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-description {
+        font-size: 1.05rem;
+    }
+    
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+    
+    /* Bölüm Responsive */
+    .how-it-works-section,
+    .pomodoro-section,
+    .mood-tracking-section {
+        padding: 60px 20px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .feature-title {
+        font-size: 1.6rem;
+    }
+    
+    .feature-description {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .logo-image {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .logo h1 {
+        font-size: 14px;
+        margin-left: 6px;
+    }
+    
+    .sidebar-menu ul li a.menu-item {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+    
+    .sidebar-menu ul li a i {
+        margin-right: 3px;
+    }
+    
+    .hero-title {
+        font-size: 1.9rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .cta-button {
+        width: 100%;
+    }
+
+    .app-preview {
+        max-width: 80%;
+    }
+    
+    /* Aşağı kaydır göstergesi için responsive konumlandırma */
+    .scroll-down-indicator {
+        bottom: 50px;
+    }
+    
+    /* Bölüm Responsive */
+    .how-it-works-section,
+    .pomodoro-section,
+    .mood-tracking-section {
+        padding: 40px 20px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .feature-title {
+        font-size: 1.4rem;
+    }
+    
+    .feature-description {
+        font-size: 0.95rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .top-sidebar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .logo {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .logo-image {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .sidebar-menu {
+        width: 100%;
+    }
+    
+    .sidebar-menu ul {
+        justify-content: center;
+    }
+    
+    .sidebar-menu ul li a.menu-item span {
+        display: none;
+    }
+    
+    .sidebar-menu ul li a.menu-item {
+        padding: 5px 10px;
+    }
+    
+    .sidebar-menu ul li a.menu-item i {
+        margin: 0;
+        font-size: 14px;
+    }
+    
+    .hero-section {
+        padding: 40px 15px;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .app-preview {
+        max-width: 90%;
+    }
+    
+    /* Bölüm Responsive */
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .feature-title {
+        font-size: 1.3rem;
+    }
+    
+    .feature-description {
+        font-size: 0.9rem;
+    }
+}

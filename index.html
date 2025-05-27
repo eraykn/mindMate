@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate: Günlük Odaklanma & Zihin Sağlığı Yardımcısı</title>
+    <link rel="stylesheet" href="pub/css/index.css">
+    <!-- Font Awesome için CDN bağlantısı -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="top-sidebar">
+            <div class="logo">
+                <img src="/assets/img/mindMateLogo.webp" alt="MindMate Logo" class="logo-image">
+                <a href="#anasayfa" class="logo-link"><h1>MindMate</h1></a>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="#anasayfa" class="menu-item"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="/html/hakkimizda.html" class="menu-item external-link"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                    <li><a href="#pomodoro" class="menu-item"><i class="fas fa-clock"></i> Pomodoro</a></li>
+                    <li><a href="#gunluk-notlar" class="menu-item"><i class="fas fa-book"></i> Notlar</a></li>
+                    <li><a href="#ruh-hali-takibi" class="menu-item"><i class="fas fa-smile"></i> Ruh Hali</a></li>
+                    <li><a href="#meditasyon" class="menu-item"><i class="fas fa-om"></i> Meditasyon</a></li>
+                    <li><a href="#mini-egzersizler" class="menu-item"><i class="fas fa-dumbbell"></i> Egzersiz</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <!-- Ana Sayfa Bölümü -->
+            <section id="anasayfa" class="active-section">
+                <!-- Video Bölümü -->
+                <div class="fullscreen-video-container">
+                    <video autoplay muted loop class="fullscreen-video">
+                        <source src="/assets/videos/mainPageVid.mp4" type="video/mp4">
+                        Tarayıcınız video etiketini desteklemiyor.
+                    </video>
+                    
+                    <!-- Scroll Down Indicator -->
+                    <div class="scroll-down-indicator">
+                        <span>Aşağı Kaydır</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <!-- Hero Section (aşağı kaydırınca görünecek) -->
+                <div class="hero-section scroll-section">
+                    <div class="hero-content scroll-element slide-in-left">
+                        <h2 class="hero-title">Odaklanma, berraklık ve sakinlik için dijital alanınız.</h2>
+                        <p class="hero-description">MindMate, düşüncelerinizi, duygularınızı ve üretkenliğinizi tek bir sessiz ve dikkat dağıtıcı unsurlardan uzak alanda yönetmenize yardımcı olmak için tasarlanmış web tabanlı bir arkadaştır.</p>
+                        <div class="cta-buttons">
+                            <a href="#pomodoro" class="cta-button pomodoro-btn">Pomodoro</a>
+                            <a href="#mini-egzersizler" class="cta-button exercises-btn">Egzersizler</a>
+                        </div>
+                    </div>
+                    <div class="hero-image scroll-element slide-in-right">
+                        <img src="/assets/img/handofapple.png" alt="MindMate Uygulaması" class="app-preview">
+                    </div>
+                </div>
+                
+                <!-- Nasıl Çalışır Bölümü -->
+                <div class="how-it-works-section scroll-section">
+                    <div class="section-header scroll-element fade-in-up">
+                        <h2 class="section-title">Nasıl Çalışır</h2>
+                        <p class="section-subtitle">Bilişsel sağlığınızı korurken tahmin yürütmeyi bırakın</p>
+                    </div>
+                    
+                    <div class="features-container">
+                        <div class="feature-image scroll-element scale-in-left">
+                            <img src="/assets/img/apple.png" alt="MindMate Özellikleri" class="feature-img">
+                        </div>
+                        <div class="feature-content scroll-element slide-in-right">
+                            <h3 class="feature-title">Zihninizi ve bedeninizi formda tutmak için günlük aktiviteler</h3>
+                            <p class="feature-description">MindMate, zihninizi ve bedeninizi formda tutmanıza yardımcı olan günlük bir aktivite planı sunar. Egzersiz yapın, lezzetli ve sağlıklı tarifler keşfedin, gri cevherinizi meşgul etmek için oyunlar oynayın ve yaşlanırken sağlıklı kalmak için neler yapabileceğinizi videolardan ve makalelerden öğrenin.</p>
+                            <div class="cta-buttons">
+                                <a href="#pomodoro" class="cta-button pomodoro-btn">Pomodoro</a>
+                                <a href="#mini-egzersizler" class="cta-button exercises-btn">Egzersizler</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pomodoro Bölümü -->
+                <div class="pomodoro-section scroll-section">
+                    <div class="features-container">
+                        <div class="feature-content scroll-element slide-in-left">
+                            <h3 class="feature-title">Dakikalarınızı Kontrol Edin, Zihninize Sahip Olun</h3>
+                            <p class="feature-description">Zamanınızın ve dikkatinizin kontrolünü geri almak için odaklanmış aralıkların gücünden yararlanın. MindMate'in Pomodoro zamanlayıcısıyla ertelemeyi bırakıp ilerlemeye başlayacaksınız — her seferinde bir odaklanmış seans. Akışınızı takip edin, tükenmişliği yenin ve 25 dakikada ne kadar çok şey başarabileceğinizi keşfedin.</p>
+                            <div class="cta-buttons">
+                                <a href="#pomodoro" class="cta-button pomodoro-btn">Pomodoro</a>
+                                <a href="#mini-egzersizler" class="cta-button exercises-btn">Egzersizler</a>
+                            </div>
+                        </div>
+                        <div class="feature-image scroll-element rotate-in-right">
+                            <img src="/assets/img/apple.png" alt="MindMate Pomodoro" class="feature-img">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mood Tracking Bölümü -->
+                <div class="mood-tracking-section scroll-section">
+                    <div class="features-container">
+                        <div class="feature-image scroll-element zoom-in-left">
+                            <img src="/assets/img/apple.png" alt="MindMate Ruh Hali Takibi" class="feature-img">
+                        </div>
+                        <div class="feature-content scroll-element slide-in-right">
+                            <h3 class="feature-title">Duygularınızı Desenlere Dönüştürün</h3>
+                            <p class="feature-description">Duygularınızın bir ritmi var — artık bunu görebilirsiniz. Ruh halinizi günlük olarak takip edin ve zaman içindeki duygusal yolculuğunuzu görselleştirin. Net, güzel grafiklerle MindMate, sizi neyin yükselttiğini, neyin aşağı çektiğini ve duygusal manzaranızı daha önce hiç olmadığı kadar nasıl kontrol altına alacağınızı fark etmenize yardımcı olur.</p>
+                            <div class="cta-buttons">
+                                <a href="#ruh-hali-takibi" class="cta-button pomodoro-btn">Ruh Hali Takibi</a>
+                                <a href="#gunluk-notlar" class="cta-button exercises-btn">Günlük Notlar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pomodoro">
+                <h2>Pomodoro Zamanlayıcısı</h2>
+                <!-- Pomodoro içeriği buraya gelecek -->
+            </section>
+
+            <section id="gunluk-notlar">
+                <h2>Günlük Notlar</h2>
+                <!-- Günlük notlar içeriği buraya gelecek -->
+            </section>
+
+            <section id="ruh-hali-takibi">
+                <h2>Ruh Hali Takibi</h2>
+                <!-- Ruh hali takibi içeriği buraya gelecek -->
+            </section>
+            
+            <section id="meditasyon">
+                <h2>Meditasyon</h2>
+                <p>Günlük meditasyon pratiğinizle zihin berraklığı ve iç huzur kazanın.</p>
+                <!-- Meditasyon içeriği buraya gelecek -->
+            </section>
+
+            <section id="mini-egzersizler">
+                <h2>Mini Egzersizler</h2>
+                <!-- Mini egzersizler içeriği buraya gelecek -->
+            </section>
+        </main>
+    </div>
+
+    <script src="pub/js/app.js"></script>
+</body>
+</html>
