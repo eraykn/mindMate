@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // İlk yükleme kontrolü
+    if (!sessionStorage.getItem('mindmate_visited')) {
+        document.body.classList.add('first-load');
+        sessionStorage.setItem('mindmate_visited', 'true');
+    }
+    
     // Top sidebar menü işlevselliği
     const menuLinks = document.querySelectorAll('.sidebar-menu a:not(.external-link), .logo-link');
     const sections = document.querySelectorAll('section');

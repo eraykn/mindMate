@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elemanları
+    // Değişkenler ve elemanlar
     const moodOptions = document.querySelectorAll('.mood-option');
     const moodNote = document.getElementById('mood-note');
     const saveMoodBtn = document.getElementById('save-mood');
@@ -10,40 +10,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmClearBtn = document.getElementById('confirm-clear');
     const successToast = document.getElementById('success-toast');
     const toastMessage = document.getElementById('toast-message');
-    
-    // İstatistik Elemanları
     const moodCountEl = document.getElementById('mood-count');
     const moodAverageEl = document.getElementById('mood-average');
     const streakCountEl = document.getElementById('streak-count');
     
-    // Chart.js için değişkenler
-    let moodChart;
-    let selectedMood = null;
+    // Tarih ve zaman
+    const now = new Date();
     
-    // LocalStorage'dan ruh hali verilerini alma
+    // Chart.js grafiği
+    let moodChart;
+    
+    // Ruh hali girdileri
     let moodEntries = JSON.parse(localStorage.getItem('mindmate-mood-entries')) || [];
     
-    // Sayfa yüklendiğinde grafik ve geçmişi oluştur
+    // Seçilen ruh hali
+    let selectedMood = null;
+    let note = '';
+    
+    // Grafiği başlat
     initializeChart();
+    
+    // Ruh hali geçmişini göster
     renderMoodHistory();
+    
+    // İstatistikleri güncelle
     updateStats();
     
-    // Ruh hali seçeneği tıklama işlemi
+    // Ruh hali seçimi
     moodOptions.forEach(option => {
         option.addEventListener('click', function() {
-            // Önceki seçimi kaldır
             moodOptions.forEach(opt => opt.classList.remove('selected'));
-            
-            // Yeni seçimi ekle
             this.classList.add('selected');
-            selectedMood = parseInt(this.dataset.mood);
-            
-            // Kaydet butonunu etkinleştir
+            selectedMood = parseInt(this.getAttribute('data-mood'));
             saveMoodBtn.disabled = false;
         });
     });
     
-    // Ruh hali kaydetme
+    // Not giriş alanı
+    moodNote.addEventListener('input', function() {
+        note = this.value.trim();
+    });
+    
     saveMoodBtn.addEventListener('click', function() {
         if (!selectedMood) return;
         
