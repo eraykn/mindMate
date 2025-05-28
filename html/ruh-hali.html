@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate: Ruh Hali Takibi</title>
+    <link rel="stylesheet" href="../pub/css/index.css">
+    <link rel="stylesheet" href="../pub/css/ruh-hali.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js kütüphanesi -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="top-sidebar">
+            <div class="logo">
+                <img src="../assets/img/mindMateLogo.webp" alt="MindMate Logo" class="logo-image">
+                <a href="../index.html" class="logo-link"><h1>MindMate</h1></a>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="../index.html#anasayfa" class="menu-item"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html" class="menu-item"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                    <li><a href="pomodoro.html" class="menu-item"><i class="fas fa-clock"></i> Pomodoro</a></li>
+                    <li><a href="notlar.html" class="menu-item"><i class="fas fa-book"></i> Notlar</a></li>
+                    <li><a href="ruh-hali.html" class="menu-item active"><i class="fas fa-smile"></i> Ruh Hali</a></li>
+                    <li><a href="meditasyon.html" class="menu-item"><i class="fas fa-om"></i> Meditasyon</a></li>
+                    <li><a href="../index.html#mini-egzersizler" class="menu-item"><i class="fas fa-dumbbell"></i> Egzersiz</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="mood-container">
+                <div class="mood-header animate-fade-up">
+                    <h1>Ruh Hali Takibi</h1>
+                    <p>Duygusal durumunuzu takip edin ve zaman içindeki değişimleri gözlemleyin.</p>
+                </div>
+
+                <div class="mood-tracker-card animate-fade-up delay-1">
+                    <div class="mood-chart-container">
+                        <canvas id="moodChart"></canvas>
+                    </div>
+                    
+                    <div class="mood-stats">
+                        <div class="stat-item">
+                            <span class="stat-value" id="mood-count">0</span>
+                            <span class="stat-label">Toplam Kayıt</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="mood-average">-</span>
+                            <span class="stat-label">Ortalama</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="streak-count">0</span>
+                            <span class="stat-label">Kayıt Serisi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mood-input-card animate-fade-up delay-2">
+                    <h2>Bugünkü Ruh Haliniz Nasıl?</h2>
+                    
+                    <div class="mood-options">
+                        <button class="mood-option" data-mood="5">
+                            <i class="fas fa-laugh-beam"></i>
+                            <span>Çok İyi</span>
+                        </button>
+                        <button class="mood-option" data-mood="4">
+                            <i class="fas fa-smile"></i>
+                            <span>İyi</span>
+                        </button>
+                        <button class="mood-option" data-mood="3">
+                            <i class="fas fa-meh"></i>
+                            <span>Normal</span>
+                        </button>
+                        <button class="mood-option" data-mood="2">
+                            <i class="fas fa-frown"></i>
+                            <span>Kötü</span>
+                        </button>
+                        <button class="mood-option" data-mood="1">
+                            <i class="fas fa-sad-tear"></i>
+                            <span>Çok Kötü</span>
+                        </button>
+                    </div>
+                    
+                    <div class="mood-form">
+                        <div class="form-group">
+                            <label for="mood-note">Not (İsteğe Bağlı)</label>
+                            <textarea id="mood-note" placeholder="Bugün nasıl hissediyorsunuz? Neler oldu?"></textarea>
+                        </div>
+                        
+                        <button id="save-mood" class="save-mood-btn" disabled>
+                            <i class="fas fa-save"></i> Ruh Halini Kaydet
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mood-history-card animate-fade-up delay-3">
+                    <div class="card-header">
+                        <h2>Ruh Hali Geçmişi</h2>
+                        <div class="card-actions">
+                            <button id="clear-history" class="clear-btn">
+                                <i class="fas fa-trash-alt"></i> Geçmişi Temizle
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mood-entries" id="mood-entries">
+                        <!-- JavaScript ile doldurulacak -->
+                        <div class="empty-history">
+                            <i class="fas fa-history"></i>
+                            <p>Henüz kaydedilmiş ruh hali bulunmuyor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onay Modalı -->
+            <div id="confirm-modal" class="confirm-modal">
+                <div class="confirm-modal-content">
+                    <h3>Geçmişi Temizle</h3>
+                    <p>Tüm ruh hali kayıtlarınız silinecek. Bu işlem geri alınamaz. Devam etmek istediğinize emin misiniz?</p>
+                    <div class="confirm-modal-actions">
+                        <button id="cancel-clear" class="cancel-btn">İptal</button>
+                        <button id="confirm-clear" class="confirm-btn">Evet, Temizle</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Başarı Toast Bildirimi -->
+            <div id="success-toast" class="toast">
+                <div class="toast-content">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="toast-message">Ruh haliniz kaydedildi!</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../pub/js/ruh-hali.js"></script>
+</body>
+</html>
