@@ -12,11 +12,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainPageLinks = document.querySelectorAll('.sidebar-menu .menu-item:not(.active)');
     mainPageLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
             const href = this.getAttribute('href');
+            
+            // Eğer bağlantı doğrudan pomodoro.html'e gidiyorsa, varsayılan davranışı koru
+            if (href && href.includes('pomodoro.html')) {
+                // Ripple efekti uygula ama sayfayı yönlendirmeyi engellemeden
+                createRipple(e);
+                return true; // Varsayılan davranışı sürdür
+            }
             
             // Sadece ana sayfadaki bölüm bağlantılarını kontrol et
             if (href && href.includes('#')) {
+                e.preventDefault();
                 console.log('Ana sayfadaki bölüme yönlendiriliyor:', href);
                 
                 // Ripple efekti uygula
