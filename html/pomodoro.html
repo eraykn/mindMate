@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate: Pomodoro Timer</title>
+    <link rel="stylesheet" href="../pub/css/index.css">
+    <link rel="stylesheet" href="../pub/css/pomodoro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="top-sidebar">
+            <div class="logo">
+                <img src="../assets/img/mindMateLogo.webp" alt="MindMate Logo" class="logo-image">
+                <a href="../index.html" class="logo-link"><h1>MindMate</h1></a>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="../index.html#anasayfa" class="menu-item"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html" class="menu-item"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                    <li><a href="pomodoro.html" class="menu-item active"><i class="fas fa-clock"></i> Pomodoro</a></li>
+                    <li><a href="notlar.html" class="menu-item"><i class="fas fa-book"></i> Notlar</a></li>
+                    <li><a href="ruh-hali.html" class="menu-item"><i class="fas fa-smile"></i> Ruh Hali</a></li>
+                    <li><a href="meditasyon.html" class="menu-item"><i class="fas fa-om"></i> Meditasyon</a></li>
+                    <li><a href="egzersiz.html" class="menu-item"><i class="fas fa-dumbbell"></i> Egzersiz</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="pomodoro-container animate-fade-up">
+                <div class="pomodoro-header">
+                    <h1>Pomodoro Timer</h1>
+                    <p>Odaklanma ve dinlenme döngüleriyle üretkenliğinizi artırın</p>
+                </div>
+
+                <div class="timer-container">
+                    <div class="session-info">
+                        <span id="session-type" class="work-session">Çalışma Zamanı</span>
+                        <span id="cycle-count">Döngü: 1/4</span>
+                    </div>
+                    
+                    <div class="timer-display">
+                        <div class="timer-circle">
+                            <svg class="timer-progress" width="260" height="260">
+                                <circle class="timer-path-elapsed" cx="130" cy="130" r="120" stroke-width="10" fill="none"></circle>
+                                <circle id="timer-path-remaining" class="timer-path-remaining" cx="130" cy="130" r="120" stroke-width="10" fill="none"></circle>
+                            </svg>
+                            <div class="timer-time">
+                                <span id="minutes">25</span>:<span id="seconds">00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timer-controls">
+                        <button id="start-timer" class="timer-btn"><i class="fas fa-play"></i> Başlat</button>
+                        <button id="pause-timer" class="timer-btn" disabled><i class="fas fa-pause"></i> Durdur</button>
+                        <button id="reset-timer" class="timer-btn"><i class="fas fa-redo"></i> Sıfırla</button>
+                    </div>
+                </div>
+
+                <div class="tasks-container">
+                    <div class="tasks-header">
+                        <h2>Görevler</h2>
+                        <div class="tasks-controls">
+                            <input type="text" id="task-input" placeholder="Yeni görev ekle...">
+                            <button id="add-task" class="task-btn" title="Görev ekle"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="tasks-list" id="tasks-list">
+                        <!-- Görevler JavaScript ile buraya eklenecek -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Break Notification Popup -->
+            <div class="notification-popup" id="break-notification">
+                <div class="notification-content">
+                    <i class="fas fa-coffee notification-icon"></i>
+                    <h3>Dinlenme Zamanı!</h3>
+                    <p>5 dakikalık mola başladı. Gözlerinizi dinlendirin ve su için.</p>
+                    <button id="acknowledge-break" class="notification-btn">Tamam</button>
+                </div>
+            </div>
+
+            <!-- Work Session Notification Popup -->
+            <div class="notification-popup" id="work-notification">
+                <div class="notification-content">
+                    <i class="fas fa-briefcase notification-icon"></i>
+                    <h3>Çalışma Zamanı!</h3>
+                    <p>25 dakikalık çalışma süresi başladı. Odaklanma zamanı!</p>
+                    <button id="acknowledge-work" class="notification-btn">Tamam</button>
+                </div>
+            </div>
+
+            <!-- Overlay for notifications -->
+            <div class="overlay" id="overlay"></div>
+            
+            <!-- Audio elements for sound effects -->
+            <audio id="button-sound" preload="auto">
+                <source src="../assets/videos/button-click.mp3" type="audio/mpeg">
+                <!-- Fallback for browsers that don't support the audio formats -->
+                Your browser does not support the audio element.
+            </audio>
+        </main>
+    </div>
+
+    <script src="../pub/js/pomodoro.js"></script>
+</body>
+</html>

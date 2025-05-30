@@ -1,0 +1,914 @@
+:root {
+    --meditation-primary: #8a9eff;
+    --meditation-secondary: #c5a8ff;
+    --meditation-accent: #ffb8d9;
+    --meditation-text: #4a4a6a;
+    --meditation-light: #f8f9ff;
+    --meditation-dark: #484b6a;
+    --breathing-color-1: #c5a8ff;
+    --breathing-color-2: #8a9eff;
+    --breathing-color-3: #ffb8d9;
+    --inhale-color: #8a9eff;
+    --hold-color: #c5a8ff;
+    --exhale-color: #ffb8d9;
+    --wait-color: #a8e5ff;
+    --guided-color-1: #a8c9ff;
+    --guided-color-2: #ffb8d9;
+    --pause-color-1: #2d3748;
+    --pause-color-2: #1a202c;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Container Styles */
+.meditation-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+/* Header Styles */
+.meditation-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.meditation-header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    background: linear-gradient(45deg, var(--meditation-primary), var(--meditation-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.meditation-header p {
+    font-size: 1.2rem;
+    color: var(--meditation-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Meditation Box Menu Styles */
+.meditation-box-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.meditation-box {
+    display: flex;
+    background-color: var(--meditation-light);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.meditation-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.meditation-box.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.meditation-box .box-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--meditation-primary), var(--meditation-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.meditation-box .box-content {
+    flex: 1;
+}
+
+.meditation-box h3 {
+    font-size: 1.3rem;
+    color: var(--meditation-dark);
+    margin-bottom: 0.5rem;
+}
+
+.meditation-box p {
+    color: var(--meditation-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.meditation-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(138, 158, 255, 0.1), rgba(197, 168, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.meditation-box:hover::after {
+    opacity: 1;
+}
+
+/* Meditation Content */
+.breathing-meditation-content,
+.guided-meditation-content {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Mantra Tool Styles */
+.mantra-meditation-content {
+    animation: fadeIn 0.5s ease;
+}
+
+.mantra-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.daily-mantra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.mantra-card {
+    width: 100%;
+    max-width: 700px;
+    min-height: 200px;
+    background: linear-gradient(135deg, var(--guided-color-1), var(--guided-color-2));
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mantra-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 6rem;
+    color: rgba(255, 255, 255, 0.1);
+    font-family: serif;
+}
+
+.mantra-card::after {
+    content: '"';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 6rem;
+    color: rgba(255, 255, 255, 0.1);
+    font-family: serif;
+}
+
+.mantra-text {
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+}
+
+.mantra-author {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+}
+
+/* Create Mantra Section */
+.create-mantra {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.create-mantra h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--meditation-dark);
+}
+
+.create-mantra p {
+    color: var(--meditation-text);
+    margin-bottom: 1.5rem;
+}
+
+.mantra-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+.mantra-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.mantra-form textarea,
+.mantra-form input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mantra-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.mantra-form textarea:focus,
+.mantra-form input:focus {
+    outline: none;
+    border-color: var(--meditation-primary);
+    box-shadow: 0 0 0 3px rgba(138, 158, 255, 0.2);
+}
+
+/* My Mantras Section */
+.my-mantras {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.my-mantras h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--meditation-dark);
+}
+
+.mantras-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mantra-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 3px solid var(--meditation-primary);
+}
+
+.mantra-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mantra-item-content {
+    flex: 1;
+}
+
+.mantra-item-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--meditation-dark);
+    margin-bottom: 0.5rem;
+}
+
+.mantra-item-author {
+    font-size: 0.9rem;
+    color: var(--meditation-text);
+    font-style: italic;
+}
+
+.mantra-item-date {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 0.3rem;
+}
+
+.mantra-item-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mantra-use-btn,
+.mantra-delete-btn {
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mantra-use-btn {
+    color: var(--meditation-primary);
+}
+
+.mantra-delete-btn {
+    color: #ff6b6b;
+}
+
+.mantra-use-btn:hover {
+    background-color: rgba(138, 158, 255, 0.1);
+}
+
+.mantra-delete-btn:hover {
+    background-color: rgba(255, 107, 107, 0.1);
+}
+
+/* Empty Mantras State */
+.empty-mantras {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--meditation-text);
+}
+
+.empty-mantras i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.empty-mantras p {
+    font-size: 1.1rem;
+}
+
+/* Mantra Saved Message */
+.mantra-saved-message {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    animation: slideUp 0.5s ease forwards;
+    font-weight: 500;
+}
+
+.mantra-saved-message.fade-out {
+    animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .mantra-card {
+        padding: 2rem;
+        min-height: 150px;
+    }
+    
+    .mantra-text {
+        font-size: 1.5rem;
+    }
+    
+    .mantra-card::before,
+    .mantra-card::after {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mantra-card {
+        padding: 1.5rem;
+    }
+    
+    .mantra-text {
+        font-size: 1.2rem;
+    }
+    
+    .mantra-card::before,
+    .mantra-card::after {
+        font-size: 3rem;
+    }
+}
+
+.meditation-subheader {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.meditation-subheader h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--meditation-dark);
+}
+
+.meditation-subheader p {
+    font-size: 1.1rem;
+    color: var(--meditation-text);
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+}
+
+.back-button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    border: none;
+    background-color: #f5f5f5;
+    color: var(--meditation-dark);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #eaeaea;
+}
+
+/* Control Buttons */
+.meditation-controls,
+.guided-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.meditation-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    border: none;
+    background-color: #f5f5f5;
+    color: var(--meditation-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.meditation-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.meditation-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.meditation-btn.primary-btn {
+    background: linear-gradient(135deg, var(--meditation-primary), var(--meditation-secondary));
+    color: white;
+}
+
+/* Breathing Container */
+.breathing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0 3rem;
+    position: relative;
+}
+
+.phase-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--meditation-dark);
+    margin-bottom: 1.5rem;
+    min-height: 40px;
+    text-align: center;
+    transition: color 0.5s ease;
+}
+
+/* Breathing Circle */
+.breathing-circle-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.breathing-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--breathing-color-1), var(--breathing-color-2), var(--breathing-color-3));
+    position: relative;
+    box-shadow: 0 0 50px rgba(138, 158, 255, 0.3);
+    transition: transform 4s ease, box-shadow 4s ease;
+    transform-origin: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.breathing-gradient {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.breathing-guide {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px dashed rgba(138, 158, 255, 0.3);
+    box-sizing: border-box;
+    opacity: 0.5;
+}
+
+/* Breathing Animation States */
+.breathing-circle.inhale {
+    transform: scale(1.8);
+    box-shadow: 0 0 70px rgba(138, 158, 255, 0.5);
+    background: linear-gradient(135deg, var(--inhale-color), var(--breathing-color-2));
+}
+
+.breathing-circle.hold {
+    transform: scale(1.8);
+    box-shadow: 0 0 70px rgba(197, 168, 255, 0.5);
+    background: linear-gradient(135deg, var(--hold-color), var(--breathing-color-2));
+}
+
+.breathing-circle.exhale {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(255, 184, 217, 0.3);
+    background: linear-gradient(135deg, var(--exhale-color), var(--breathing-color-2));
+}
+
+.breathing-circle.wait {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(168, 229, 255, 0.3);
+    background: linear-gradient(135deg, var(--wait-color), var(--breathing-color-2));
+}
+
+/* Phase Text Colors */
+.phase-text.inhale {
+    color: var(--inhale-color);
+}
+
+.phase-text.hold {
+    color: var(--hold-color);
+}
+
+.phase-text.exhale {
+    color: var(--exhale-color);
+}
+
+.phase-text.wait {
+    color: var(--wait-color);
+}
+
+/* Timer Display */
+.timer-display,
+.guided-timer {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--meditation-dark);
+    margin-top: 1.5rem;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Guided Meditation Styles */
+.guided-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0 3rem;
+    position: relative;
+}
+
+.guided-text-container {
+    width: 100%;
+    max-width: 700px;
+    height: 300px;
+    margin: 2rem auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--guided-color-1), var(--guided-color-2));
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.guided-text {
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.guided-text.active {
+    opacity: 1;
+}
+
+.guided-text.fade-out {
+    opacity: 0;
+}
+
+/* The Pause - 90 Saniye Sessizlik Stilleri */
+.pause-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--pause-color-1), var(--pause-color-2));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+}
+
+.pause-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-in-out, visibility 0s;
+}
+
+.pause-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.pause-circle {
+    position: relative;
+    width: 260px;
+    height: 260px;
+}
+
+.pause-timer-circle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.pause-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+}
+
+.pause-path-elapsed {
+    stroke: rgba(255, 255, 255, 0.2);
+}
+
+.pause-path-remaining {
+    stroke: white;
+    stroke-linecap: round;
+    transform-origin: center;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.pause-time {
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    font-variant-numeric: tabular-nums;
+}
+
+.pause-message {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+/* Nefes Alış Talimatları İyileştirmeleri */
+.meditation-instructions {
+    margin-top: 3rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.meditation-instructions h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--meditation-dark);
+    font-size: 1.8rem;
+}
+
+.instruction-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.instruction-step {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.9));
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 3px solid;
+}
+
+.instruction-step:nth-child(1) {
+    border-left-color: var(--inhale-color);
+}
+
+.instruction-step:nth-child(2) {
+    border-left-color: var(--hold-color);
+}
+
+.instruction-step:nth-child(3) {
+    border-left-color: var(--exhale-color);
+}
+
+.instruction-step:nth-child(4) {
+    border-left-color: var(--wait-color);
+}
+
+.instruction-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--meditation-primary), var(--meditation-secondary));
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(138, 158, 255, 0.3);
+}
+
+.instruction-step:nth-child(1) .step-icon {
+    background: linear-gradient(135deg, var(--inhale-color), var(--breathing-color-2));
+}
+
+.instruction-step:nth-child(2) .step-icon {
+    background: linear-gradient(135deg, var(--hold-color), var(--breathing-color-2));
+}
+
+.instruction-step:nth-child(3) .step-icon {
+    background: linear-gradient(135deg, var(--exhale-color), var(--breathing-color-2));
+}
+
+.instruction-step:nth-child(4) .step-icon {
+    background: linear-gradient(135deg, var(--wait-color), var(--breathing-color-2));
+}
+
+.step-text h3 {
+    font-size: 1.2rem;
+    color: var(--meditation-dark);
+    margin-bottom: 0.5rem;
+}
+
+.step-text p {
+    color: var(--meditation-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Mobil görünüm için düzenlemeler */
+@media (max-width: 768px) {
+    .instruction-steps {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .instruction-step {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        padding: 1rem;
+    }
+    
+    .step-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
+    
+    .step-text {
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .meditation-instructions {
+        padding: 1.5rem;
+    }
+    
+    .step-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .step-text p {
+        font-size: 0.9rem;
+    }
+}

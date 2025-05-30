@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate: Meditasyon</title>
+    <link rel="stylesheet" href="../pub/css/index.css">
+    <link rel="stylesheet" href="../pub/css/meditasyon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="top-sidebar">
+            <div class="logo">
+                <img src="../assets/img/mindMateLogo.webp" alt="MindMate Logo" class="logo-image">
+                <a href="../index.html" class="logo-link"><h1>MindMate</h1></a>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="../index.html#anasayfa" class="menu-item"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html" class="menu-item"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                    <li><a href="pomodoro.html" class="menu-item"><i class="fas fa-clock"></i> Pomodoro</a></li>
+                    <li><a href="notlar.html" class="menu-item"><i class="fas fa-book"></i> Notlar</a></li>
+                    <li><a href="ruh-hali.html" class="menu-item"><i class="fas fa-smile"></i> Ruh Hali</a></li>
+                    <li><a href="meditasyon.html" class="menu-item active"><i class="fas fa-om"></i> Meditasyon</a></li>
+                    <li><a href="egzersiz.html" class="menu-item"><i class="fas fa-dumbbell"></i> Egzersiz</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="meditation-container">
+                <div class="meditation-header animate-fade-up">
+                    <h1>Meditasyon</h1>
+                    <p>Zihinsel berraklık ve rahatlama için meditasyon seçenekleri</p>
+                </div>
+
+                <!-- Meditasyon Kutu Menüsü -->
+                <div class="meditation-box-menu animate-fade-up delay-1">
+                    <div class="meditation-box" id="breathing-meditation-box">
+                        <div class="box-icon">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <div class="box-content">
+                            <h3>Nefes Meditasyonu</h3>
+                            <p>Daire ile birlikte nefes alarak zihinsel huzuru yakalayın.</p>
+                        </div>
+                    </div>
+                    <div class="meditation-box" id="guided-meditation-box">
+                        <div class="box-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="box-content">
+                            <h3>Zihinsel Tarama Rehberi</h3>
+                            <p>Inner Voice, Outer Peace</p>
+                        </div>
+                    </div>
+                    <div class="meditation-box" id="pause-meditation-box">
+                        <div class="box-icon">
+                            <i class="fas fa-pause"></i>
+                        </div>
+                        <div class="box-content">
+                            <h3>The Pause</h3>
+                            <p>90 saniye sessizlik - dijital ortamda fiziksel boşluk</p>
+                        </div>
+                    </div>
+                    <div class="meditation-box" id="mantra-meditation-box">
+                        <div class="box-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="box-content">
+                            <h3>Mantram</h3>
+                            <p>Her güne küçük bir hatirlatma.</p>
+                        </div>
+                    </div>
+                    <div class="meditation-box disabled">
+                        <div class="box-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="box-content">
+                            <h3>Bulut Meditasyonu</h3>
+                            <p>Yakında eklenecek</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nefes Meditasyonu Bölümü (başlangıçta gizli) -->
+                <div id="breathing-meditation-content" class="breathing-meditation-content" style="display: none;">
+                    <div class="meditation-subheader animate-fade-up">
+                        <h2>Nefes Meditasyonu</h2>
+                        <p>Daire ile birlikte nefes alarak zihinsel huzuru yakalayın.</p>
+                        <button id="back-to-menu-breathing" class="back-button">
+                            <i class="fas fa-arrow-left"></i> Geri Dön
+                        </button>
+                    </div>
+
+                    <div class="meditation-controls animate-fade-up delay-1">
+                        <button id="start-meditation" class="meditation-btn primary-btn">
+                            <i class="fas fa-play"></i> Başlat
+                        </button>
+                        <button id="pause-meditation" class="meditation-btn" disabled>
+                            <i class="fas fa-pause"></i> Duraklat
+                        </button>
+                        <button id="reset-meditation" class="meditation-btn">
+                            <i class="fas fa-redo"></i> Sıfırla
+                        </button>
+                    </div>
+
+                    <div class="breathing-container animate-fade-up delay-2">
+                        <div class="phase-text" id="phase-text">Hazır</div>
+                        
+                        <div class="breathing-circle-container">
+                            <div class="breathing-circle" id="breathing-circle">
+                                <div class="breathing-gradient"></div>
+                            </div>
+                            <div class="breathing-guide" id="breathing-guide"></div>
+                        </div>
+                        
+                        <div class="timer-display">
+                            <span id="minutes">00</span>:<span id="seconds">00</span>
+                        </div>
+                    </div>
+
+                    <div class="meditation-settings animate-fade-up delay-3">
+                        <div class="settings-section">
+                            <h3>Ses Ayarları</h3>
+                            <div class="setting-control">
+                                <label for="sound-toggle">
+                                    <i class="fas fa-volume-up"></i> Ses Efektleri
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" id="sound-toggle" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="setting-control">
+                                <label for="background-sound">
+                                    <i class="fas fa-music"></i> Arka Plan Sesi
+                                </label>
+                                <select id="background-sound">
+                                    <option value="none">Yok</option>
+                                    <option value="nature">Doğa Sesleri</option>
+                                    <option value="rain">Yağmur</option>
+                                    <option value="ocean">Okyanus</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h3>Seans Bilgisi</h3>
+                            <div class="info-box">
+                                <div class="info-item">
+                                    <span class="info-label">Tamamlanan Seanslar</span>
+                                    <span class="info-value" id="completed-sessions">0</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Toplam Meditasyon Süresi</span>
+                                    <span class="info-value" id="total-meditation-time">00:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="meditation-instructions animate-fade-up delay-4">
+                        <h2>Nasıl Nefes Alınır?</h2>
+                        <div class="instruction-steps">
+                            <div class="instruction-step">
+                                <div class="step-icon"><i class="fas fa-lungs"></i></div>
+                                <div class="step-text">
+                                    <h3>Nefes Al (4s)</h3>
+                                    <p>Daire büyürken yavaşça ve derin bir nefes alın.</p>
+                                </div>
+                            </div>
+                            <div class="instruction-step">
+                                <div class="step-icon"><i class="fas fa-pause"></i></div>
+                                <div class="step-text">
+                                    <h3>Tut (4s)</h3>
+                                    <p>Nefesinizi daire sabit kalırken tutun.</p>
+                                </div>
+                            </div>
+                            <div class="instruction-step">
+                                <div class="step-icon"><i class="fas fa-wind"></i></div>
+                                <div class="step-text">
+                                    <h3>Nefes Ver (4s)</h3>
+                                    <p>Daire küçülürken yavaşça nefesinizi verin.</p>
+                                </div>
+                            </div>
+                            <div class="instruction-step">
+                                <div class="step-icon"><i class="fas fa-hourglass-half"></i></div>
+                                <div class="step-text">
+                                    <h3>Bekle (4s)</h3>
+                                    <p>Daire en küçük halindeyken bir sonraki döngü için bekleyin.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zihinsel Tarama Rehberi Bölümü (başlangıçta gizli) -->
+                <div id="guided-meditation-content" class="guided-meditation-content" style="display: none;">
+                    <div class="meditation-subheader animate-fade-up">
+                        <h2>Zihinsel Tarama Rehberi</h2>
+                        <p>Inner Voice, Outer Peace</p>
+                        <button id="back-to-menu-guided" class="back-button">
+                            <i class="fas fa-arrow-left"></i> Geri Dön
+                        </button>
+                    </div>
+
+                    <div class="guided-controls animate-fade-up delay-1">
+                        <button id="start-guided" class="meditation-btn primary-btn">
+                            <i class="fas fa-play"></i> Başlat
+                        </button>
+                        <button id="pause-guided" class="meditation-btn" disabled>
+                            <i class="fas fa-pause"></i> Duraklat
+                        </button>
+                        <button id="reset-guided" class="meditation-btn">
+                            <i class="fas fa-redo"></i> Sıfırla
+                        </button>
+                    </div>
+
+                    <div class="guided-container animate-fade-up delay-2">
+                        <div class="guided-timer">
+                            <span id="guided-minutes">00</span>:<span id="guided-seconds">00</span>
+                        </div>
+                        <div class="guided-text-container">
+                            <div id="guided-text" class="guided-text"></div>
+                        </div>
+                    </div>
+
+                    <div class="guided-settings animate-fade-up delay-3">
+                        <div class="settings-section">
+                            <h3>Ses Ayarları</h3>
+                            <div class="setting-control">
+                                <label for="voice-toggle">
+                                    <i class="fas fa-microphone"></i> Sesli Rehber
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" id="voice-toggle" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="setting-control">
+                                <label for="guided-background-sound">
+                                    <i class="fas fa-music"></i> Arka Plan Sesi
+                                </label>
+                                <select id="guided-background-sound">
+                                    <option value="none">Yok</option>
+                                    <option value="lofi" selected>Lo-Fi</option>
+                                    <option value="nature">Doğa</option>
+                                    <option value="rain">Yağmur</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h3>Rehberlik Seçenekleri</h3>
+                            <div class="setting-control">
+                                <label for="text-speed">
+                                    <i class="fas fa-tachometer-alt"></i> Metin Hızı
+                                </label>
+                                <select id="text-speed">
+                                    <option value="slow">Yavaş</option>
+                                    <option value="medium" selected>Orta</option>
+                                    <option value="fast">Hızlı</option>
+                                </select>
+                            </div>
+                            <div class="setting-control">
+                                <label for="guided-duration">
+                                    <i class="fas fa-hourglass"></i> Seans Süresi
+                                </label>
+                                <select id="guided-duration">
+                                    <option value="3">3 dakika</option>
+                                    <option value="5" selected>5 dakika</option>
+                                    <option value="10">10 dakika</option>
+                                    <option value="15">15 dakika</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Pause - 90 Saniye Sessizlik Bölümü -->
+                <div id="pause-overlay" class="pause-overlay">
+                    <div class="pause-container">
+                        <div class="pause-circle">
+                            <div class="pause-timer-circle">
+                                <svg class="pause-progress" width="260" height="260">
+                                    <circle class="pause-path-elapsed" cx="130" cy="130" r="120" stroke-width="3" fill="none"></circle>
+                                    <circle id="pause-path-remaining" class="pause-path-remaining" cx="130" cy="130" r="120" stroke-width="3" fill="none"></circle>
+                                </svg>
+                                <div class="pause-time">
+                                    <span id="pause-seconds">90</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pause-message" id="pause-message">Sadece an'da kal</div>
+                    </div>
+                </div>
+
+                <!-- Mantra Aracı Bölümü (başlangıçta gizli) -->
+                <div id="mantra-meditation-content" class="mantra-meditation-content" style="display: none;">
+                    <div class="meditation-subheader animate-fade-up">
+                        <h2>Mantram</h2>
+                        <p>Her güne küçük bir hatırlatma.</p>
+                        <button id="back-to-menu-mantra" class="back-button">
+                            <i class="fas fa-arrow-left"></i> Geri Dön
+                        </button>
+                    </div>
+
+                    <div class="mantra-container animate-fade-up delay-1">
+                        <div class="daily-mantra">
+                            <div class="mantra-card">
+                                <div class="mantra-text" id="mantra-text">
+                                    "You're not behind. You're on your way."
+                                </div>
+                                <div class="mantra-author" id="mantra-author">MindMate</div>
+                            </div>
+                            <button id="new-mantra-btn" class="meditation-btn primary-btn">
+                                <i class="fas fa-sync-alt"></i> Yeni Mantra
+                            </button>
+                        </div>
+                        
+                        <div class="create-mantra animate-fade-up delay-2">
+                            <h3>Kendi Mantranı Oluştur</h3>
+                            <p>Sana ilham veren, motive eden veya hatırlamak istediğin bir cümle yaz.</p>
+                            
+                            <div class="mantra-form">
+                                <div class="form-group">
+                                    <textarea id="custom-mantra" placeholder="Mantranı buraya yaz..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="mantra-author-input" placeholder="İsmin (isteğe bağlı)">
+                                </div>
+                                <button id="save-mantra-btn" class="meditation-btn primary-btn">
+                                    <i class="fas fa-save"></i> Mantramı Kaydet
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="my-mantras animate-fade-up delay-3">
+                            <h3>Mantralarım</h3>
+                            <div class="mantras-list" id="mantras-list">
+                                <!-- JavaScript ile doldurulacak -->
+                                <div class="empty-mantras">
+                                    <i class="fas fa-quote-right"></i>
+                                    <p>Henüz kaydedilmiş mantran yok.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Audio elements -->
+        <audio id="ding-sound" preload="auto">
+            <source src="../assets/sounds/meditation-ding.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="nature-sound" loop>
+            <source src="../assets/sounds/nature.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="rain-sound" loop>
+            <source src="../assets/sounds/rain.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="ocean-sound" loop>
+            <source src="../assets/sounds/ocean.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="lofi-sound" loop>
+            <source src="../assets/sounds/lofi.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="bell-sound" preload="auto">
+            <source src="../assets/sounds/bell.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script src="../pub/js/meditasyon.js"></script>
+</body>
+</html>

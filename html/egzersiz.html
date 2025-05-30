@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate: Egzersizler</title>
+    <link rel="stylesheet" href="../pub/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="top-sidebar">
+            <div class="logo">
+                <img src="../assets/img/mindMateLogo.webp" alt="MindMate Logo" class="logo-image">
+                <a href="../index.html" class="logo-link"><h1>MindMate</h1></a>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="../index.html#anasayfa" class="menu-item external-link"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html" class="menu-item external-link"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                    <li><a href="pomodoro.html" class="menu-item external-link"><i class="fas fa-clock"></i> Pomodoro</a></li>
+                    <li><a href="notlar.html" class="menu-item external-link"><i class="fas fa-book"></i> Notlar</a></li>
+                    <li><a href="ruh-hali.html" class="menu-item external-link"><i class="fas fa-smile"></i> Ruh Hali</a></li>
+                    <li><a href="meditasyon.html" class="menu-item external-link"><i class="fas fa-om"></i> Meditasyon</a></li>
+                    <li><a href="egzersiz.html" class="menu-item active"><i class="fas fa-dumbbell"></i> Egzersiz</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="exercise-container">
+                <div class="exercise-header animate-fade-up">
+                    <h1>Mini Egzersizler</h1>
+                    <p>Günlük rutininize ekleyebileceğiniz kısa, etkili egzersizler.</p>
+                </div>
+
+                <!-- Egzersiz Menüsü -->
+                <div class="exercise-menu animate-fade-up delay-1">
+                    <div class="exercise-box" id="chair-exercise-box">
+                        <div class="exercise-icon">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <div class="exercise-content">
+                            <h3>📦 Sandalye Fit</h3>
+                            <p>Evdeki mobilya ile mobilize ol.</p>
+                        </div>
+                    </div>
+                    <div class="exercise-box disabled">
+                        <div class="exercise-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="exercise-content">
+                            <h3>Göz Egzersizleri</h3>
+                            <p>Yakında eklenecek</p>
+                        </div>
+                    </div>
+                    <div class="exercise-box disabled">
+                        <div class="exercise-icon">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <div class="exercise-content">
+                            <h3>Masa Başı Hareketleri</h3>
+                            <p>Yakında eklenecek</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sandalye Egzersizleri Bölümü -->
+                <div id="chair-exercises" class="exercise-section" style="display: none;">
+                    <div class="exercise-section-header animate-fade-up">
+                        <h2>Sandalye Fit</h2>
+                        <p>Evdeki mobilya ile mobilize ol.</p>
+                        <button id="back-to-menu" class="back-button">
+                            <i class="fas fa-arrow-left"></i> Egzersiz Menüsüne Dön
+                        </button>
+                    </div>
+
+                    <div class="exercise-intro animate-fade-up delay-1">
+                        <p>Sandalye ile yapabileceğiniz bu basit egzersizler oturduğunuz yerden formda kalmanızı sağlar. Her hareket için 10-15 tekrar yapın ve seti 3 kez tekrarlayın.</p>
+                    </div>
+
+                    <!-- Egzersiz Listesi -->
+                    <div class="exercise-list">
+                        <!-- Otur-kalk tekrarları -->
+                        <div class="exercise-item animate-fade-up delay-2">
+                            <div class="exercise-animation">
+                                <div class="chair-situp-animation">
+                                    <div class="chair"></div>
+                                    <div class="person">
+                                        <div class="head"></div>
+                                        <div class="body"></div>
+                                        <div class="leg-left"></div>
+                                        <div class="leg-right"></div>
+                                        <div class="arm-left"></div>
+                                        <div class="arm-right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="exercise-details">
+                                <h3>Otur-Kalk Tekrarları</h3>
+                                <p>Sandalyenin önünde durun. Kontrollü bir şekilde oturun ve sonra ayağa kalkın. Hareketi yaparken ayaklarınızın yere sağlam basmasına, sırtınızın düz olmasına dikkat edin.</p>
+                                <div class="exercise-tips">
+                                    <h4>İpuçları:</h4>
+                                    <ul>
+                                        <li>Kalkarken nefes verin, otururken nefes alın</li>
+                                        <li>Dizlerinizi 90 derece açıda tutmaya çalışın</li>
+                                        <li>Kalkarken karın kaslarınızı sıkın</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diz çekme -->
+                        <div class="exercise-item animate-fade-up delay-3">
+                            <div class="exercise-animation">
+                                <div class="chair-kneeraise-animation">
+                                    <div class="chair"></div>
+                                    <div class="person">
+                                        <div class="head"></div>
+                                        <div class="body"></div>
+                                        <div class="leg-left"></div>
+                                        <div class="leg-right"></div>
+                                        <div class="arm-left"></div>
+                                        <div class="arm-right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="exercise-details">
+                                <h3>Diz Çekme</h3>
+                                <p>Sandalyeye oturun, ayaklarınız yerde olsun. Sırayla dizlerinizi göğsünüze doğru çekin. Karın kaslarınızı çalıştırmak için hareket boyunca karnınızı içe doğru çekin.</p>
+                                <div class="exercise-tips">
+                                    <h4>İpuçları:</h4>
+                                    <ul>
+                                        <li>Sırtınızı düz tutun, öne eğilmeyin</li>
+                                        <li>Dizinizi çekerken nefes verin</li>
+                                        <li>Hareketi kontrollü yapın, hızlı değil</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kol germe -->
+                        <div class="exercise-item animate-fade-up delay-4">
+                            <div class="exercise-animation">
+                                <div class="chair-armstretch-animation">
+                                    <div class="chair"></div>
+                                    <div class="person">
+                                        <div class="head"></div>
+                                        <div class="body"></div>
+                                        <div class="leg-left"></div>
+                                        <div class="leg-right"></div>
+                                        <div class="arm-left"></div>
+                                        <div class="arm-right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="exercise-details">
+                                <h3>Kol Germe (Arkaya Doğru)</h3>
+                                <p>Sandalyeye düz oturun. Kollarınızı arkaya doğru uzatın, omuzlarınızı geri çekin. Bu pozisyonda birkaç saniye bekleyin ve yavaşça başlangıç pozisyonuna dönün.</p>
+                                <div class="exercise-tips">
+                                    <h4>İpuçları:</h4>
+                                    <ul>
+                                        <li>Göğsünüzü açın, omuzlarınızı dik tutun</li>
+                                        <li>Hareketi yaparken derin nefes alıp verin</li>
+                                        <li>Sırt kaslarınızı hissetmeye çalışın</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ayakta calf raise -->
+                        <div class="exercise-item animate-fade-up delay-5">
+                            <div class="exercise-animation">
+                                <div class="chair-calfraise-animation">
+                                    <div class="chair"></div>
+                                    <div class="person">
+                                        <div class="head"></div>
+                                        <div class="body"></div>
+                                        <div class="leg-left"></div>
+                                        <div class="leg-right"></div>
+                                        <div class="arm-left"></div>
+                                        <div class="arm-right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="exercise-details">
+                                <h3>Ayakta Calf Raise</h3>
+                                <p>Sandalyenin arkasına tutunun. Ayaklarınız kalça genişliğinde açık olsun. Parmak uçlarınızda yükselin ve yavaşça topuklarınızı yere indirin.</p>
+                                <div class="exercise-tips">
+                                    <h4>İpuçları:</h4>
+                                    <ul>
+                                        <li>Dengede kalmak için sandalyeyi sağlamca tutun</li>
+                                        <li>Yükselirken nefes verin, inerken nefes alın</li>
+                                        <li>Baldır kaslarınızı tamamen sıkın ve gevşetin</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Egzersiz tamamlama bilgisi -->
+                    <div class="exercise-completion animate-fade-up delay-6">
+                        <div class="completion-circle">
+                            <svg class="completion-progress" width="120" height="120">
+                                <circle class="path-elapsed" cx="60" cy="60" r="54" stroke-width="8" fill="none"></circle>
+                                <circle id="completion-path" class="path-remaining" cx="60" cy="60" r="54" stroke-width="8" fill="none"></circle>
+                            </svg>
+                            <div class="completion-text">
+                                <span id="completion-percent">0</span>%
+                            </div>
+                        </div>
+                        <div class="completion-info">
+                            <h3>Egzersiz Takibiniz</h3>
+                            <p>Bu egzersizleri kaç kez tamamladığınızı takip edin.</p>
+                            <button id="complete-exercise" class="completion-btn">
+                                <i class="fas fa-check"></i> Bugün Tamamladım
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../pub/js/egzersiz.js"></script>
+    <script src="../pub/js/page-transition.js"></script>
+</body>
+</html>

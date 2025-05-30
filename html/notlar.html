@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate: Günlük Notlar</title>
+    <link rel="stylesheet" href="../pub/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="top-sidebar">
+            <div class="logo">
+                <img src="../assets/img/mindMateLogo.webp" alt="MindMate Logo" class="logo-image">
+                <a href="../index.html" class="logo-link"><h1>MindMate</h1></a>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="../index.html#anasayfa" class="menu-item"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html" class="menu-item"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                    <li><a href="pomodoro.html" class="menu-item"><i class="fas fa-clock"></i> Pomodoro</a></li>
+                    <li><a href="notlar.html" class="menu-item active"><i class="fas fa-book"></i> Notlar</a></li>
+                    <li><a href="ruh-hali.html" class="menu-item"><i class="fas fa-smile"></i> Ruh Hali</a></li>
+                    <li><a href="meditasyon.html" class="menu-item"><i class="fas fa-om"></i> Meditasyon</a></li>
+                    <li><a href="egzersiz.html" class="menu-item"><i class="fas fa-dumbbell"></i> Egzersiz</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="notes-container">
+                <div class="notes-header">
+                    <h1 class="animate-fade-up">Günlük Notlar</h1>
+                    <p class="animate-fade-up delay-1">Düşüncelerinizi, fikirlerinizi ve anılarınızı burada saklayın.</p>
+                </div>
+
+                <div class="notes-controls animate-fade-up delay-2">
+                    <div class="search-filter">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="search-notes" placeholder="Notlarda ara...">
+                        </div>
+                        <div class="filter-options">
+                            <select id="sort-notes">
+                                <option value="newest">En Yeni</option>
+                                <option value="oldest">En Eski</option>
+                                <option value="alphabetical">A-Z</option>
+                                <option value="reverse-alphabetical">Z-A</option>
+                            </select>
+                            <select id="filter-notes">
+                                <option value="all">Tümünü Göster</option>
+                                <option value="pinned">Pinlenenler</option>
+                                <option value="favorites">Favoriler</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="add-note-btn" class="add-note-btn">
+                        <i class="fas fa-plus"></i> Yeni Not
+                    </button>
+                </div>
+
+                <div class="pinned-notes-section animate-fade-up delay-3">
+                    <h2 class="section-title"><i class="fas fa-thumbtack"></i> Pinlenen Notlar</h2>
+                    <div id="pinned-notes" class="notes-grid">
+                        <!-- Pinlenen notlar JavaScript ile buraya eklenecek -->
+                        <div class="empty-state pinned-empty">
+                            <i class="fas fa-thumbtack"></i>
+                            <p>Henüz pinlenmiş not yok</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="all-notes-section animate-fade-up delay-4">
+                    <h2 class="section-title"><i class="fas fa-book"></i> Tüm Notlar</h2>
+                    <div id="all-notes" class="notes-grid">
+                        <!-- Tüm notlar JavaScript ile buraya eklenecek -->
+                        <div class="empty-state all-empty">
+                            <i class="fas fa-book"></i>
+                            <p>Henüz not eklenmemiş</p>
+                            <button class="add-first-note-btn">İlk Notunuzu Ekleyin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Not ekleme/düzenleme modalı -->
+        <div id="note-modal" class="note-modal">
+            <div class="note-modal-content">
+                <div class="note-modal-header">
+                    <h2 id="modal-title">Yeni Not</h2>
+                    <button id="close-modal" class="close-modal">&times;</button>
+                </div>
+                <div class="note-modal-body">
+                    <form id="note-form">
+                        <div class="form-group">
+                            <label for="note-title">Başlık</label>
+                            <input type="text" id="note-title" placeholder="Not başlığı..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="note-content">İçerik</label>
+                            <textarea id="note-content" placeholder="Notunuzu buraya yazın..." rows="8" required></textarea>
+                        </div>
+                        <div class="form-group color-select">
+                            <label>Not Rengi</label>
+                            <div class="color-options">
+                                <div class="color-option" data-color="#ffffff" style="background-color: #ffffff;"></div>
+                                <div class="color-option" data-color="#f8e8e8" style="background-color: #f8e8e8;"></div>
+                                <div class="color-option" data-color="#e8f8e8" style="background-color: #e8f8e8;"></div>
+                                <div class="color-option" data-color="#e8e8f8" style="background-color: #e8e8f8;"></div>
+                                <div class="color-option" data-color="#f8f8e8" style="background-color: #f8f8e8;"></div>
+                                <div class="color-option" data-color="#e8f8f8" style="background-color: #e8f8f8;"></div>
+                            </div>
+                            <input type="hidden" id="note-color" value="#ffffff">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" id="save-note" class="save-note-btn">Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Not silme onay modalı -->
+        <div id="delete-confirm-modal" class="delete-confirm-modal">
+            <div class="delete-modal-content">
+                <h3>Not Silinecek</h3>
+                <p>Bu notu silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+                <div class="delete-modal-actions">
+                    <button id="cancel-delete" class="cancel-btn">İptal</button>
+                    <button id="confirm-delete" class="delete-btn">Sil</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../pub/js/notlar.js"></script>
+</body>
+</html>
